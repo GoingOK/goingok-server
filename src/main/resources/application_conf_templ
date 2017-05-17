@@ -1,0 +1,33 @@
+akka {
+  loglevel = "DEBUG"
+  loggers = ["akka.event.slf4j.Slf4jLogger"]
+  logging-filter = "akka.event.slf4j.Slf4jLoggingFilter"
+  logger-startup-timeout=30s
+
+  http.server {
+    idle-timeout = 180 s
+    request-timeout = 20 s
+  }
+}
+
+server {
+  host =  "localhost"
+  port = 8080
+}
+
+db = {
+  dataSourceClass = "org.postgresql.ds.PGSimpleDataSource"
+  properties = {
+    serverName = "localhost"
+    portNumber = "5432"
+    databaseName = "goingok"
+    user = "goingok"
+    password = "goingok"
+  }
+  numThreads = 10
+  connectionTimeout = 2s
+}
+
+google = {
+  client_id = "myClientId.apps.googleusercontent.com"
+}
