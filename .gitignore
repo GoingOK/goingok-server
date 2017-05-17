@@ -59,3 +59,8 @@ fabric.properties
 /src/main/resources/application.conf
 /src/main/resources/logback.xml
 /.idea/
+!/src/main/resources/logback.xml
+project/
+src/test/java/
+src/test/resources/
+src/test/scala-2.12/
