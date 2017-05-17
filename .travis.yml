@@ -3,3 +3,7 @@ scala:
    - 2.12.0
 jdk:
   - oraclejdk8
+
+branches:
+  only:
+    - develop
