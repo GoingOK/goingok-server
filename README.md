@@ -1,13 +1,20 @@
-[![Build Status](https://travis-ci.org/GoingOK/goingok-server.svg?branch=master)](https://travis-ci.org/GoingOK/goingok-server) [ ![Download](https://api.bintray.com/packages/nlytx/nlytx_commons/nlytx_commons/images/download.svg?version=0.1.1) ](https://bintray.com/nlytx/nlytx_commons/nlytx_commons/0.1.1/link)
+[![Build Status](https://travis-ci.org/GoingOK/goingok-server.svg?branch=master)](https://travis-ci.org/GoingOK/goingok-server) [ ![bintray](https://api.bintray.com/packages/nlytx/nlytx_commons/nlytx_commons/images/download.svg?version=0.1.1) ](https://bintray.com/nlytx/nlytx_commons/nlytx_commons/0.1.1/link) [![https://img.shields.io/badge/license-Apache%202.0-blue.svg](https://img.shields.io/badge/license-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 # goingok-server
 
-A REST API for [goingok-client](https://github.com/GoingOK/goingok-client).
+This is the server side code for a full stack providing [GoingOK](http://goingok.org), a web application for personal reflective writing. The application was developed by [Andrew Gibson](http://andrewresearch.net) as part of his Doctoral research on Reflective Writing Analytics. It is now an open source project.
+ 
+ This repo provides the REST API for [goingok-client](https://github.com/GoingOK/goingok-client).
+
 
 
 ### Documentation
 
-See the [docs](http://goingok.org/docs/) for more information.
+See the [docs](http://goingok.org/docs/) for documentation on both client and server components.
+
+### Contributing
+
+Contributions to the code are welcome. Please read [CONTRIBUTING](//CONTRIBUTING.md) for more information.
 
 ### License
 
