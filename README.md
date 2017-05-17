@@ -14,7 +14,7 @@ See the [docs](http://goingok.org/docs/) for documentation on both client and se
 
 ### Contributing
 
-Contributions to the code are welcome. Please read [CONTRIBUTING](//CONTRIBUTING.md) for more information.
+Contributions to the code are welcome. Please read [CONTRIBUTING](CONTRIBUTING.md) for more information.
 
 ### License
 
