@@ -1,6 +1,7 @@
 package org.goingok.httpServer
 
 import akka.http.scaladsl.Http
+import org.goingok.BuildInfo
 import org.goingok.data.persistence.db.DatabaseOps
 
 import scala.util.{Failure, Success}
@@ -24,6 +25,7 @@ object Server extends GoingOkAPI {
   var dbOk = false
 
   def startServer(address:String, port:Int) = {
+    log.info("->> STARTING {} - version {} <<-",BuildInfo.name,BuildInfo.version)
     log.info("Connecting to DB server")
     connectDb
     log.info("Starting http server at {}:{}",address,port)
