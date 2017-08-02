@@ -7,7 +7,7 @@ import akka.http.scaladsl.model.StatusCodes._
 import akka.http.scaladsl.model.headers.RawHeader
 import com.softwaremill.session.{SessionConfig, SessionManager}
 import org.goingok._
-import org.goingok.data.models.{GokId, ReflectionEntry, Research}
+import org.goingok.data.models.{GokId, ReflectionEntry, Research, ServerInfo}
 import org.goingok.handlers.{AuthorisationHandler, ProfileHandler}
 import org.goingok.message.{HandlerMessage, JsonMessage}
 import org.json4s.JsonAST.JString
@@ -111,6 +111,18 @@ trait GoingOkAPI extends GenericApi {
 
     profileRoutes ~ authRoutes
 
+  }
+
+  lazy val serverInfo = ServerInfo(BuildInfo.name,BuildInfo.version,BuildInfo.builtAtString)
+
+  override val adminRoutes = pathPrefix("admin") {
+    path("version") {
+        get {
+            log.info("Version request")
+            complete(serverInfo)
+        }
+    } ~
+    get { nothingHere }
   }
 
 

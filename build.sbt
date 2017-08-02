@@ -1,22 +1,22 @@
 name := "goingok-server"
-version := "1.0.0"
-scalaVersion := "2.12.2"
+version := "1.0.1"
+scalaVersion := "2.12.3"
 organization := "org.goingok"
 
+//Enable this only for local builds - disabled for Travis
 //enablePlugins(JavaAppPackaging)
 
 //Scala library versions
-val akkaVersion = "2.5.1"
-val akkaStreamVersion = "2.5.1"
-val akkaHttpVersion = "10.0.6"
-val json4sVersion = "3.5.1"
-val slickVersion = "3.2.0"
-val slickpgVersion = "0.15.0-RC"
+val akkaVersion = "2.5.3"
+val akkaStreamVersion = "2.5.3"
+val akkaHttpVersion = "10.0.9"
+val json4sVersion = "3.5.3"
+val slickVersion = "3.2.1"
+val slickpgVersion = "0.15.3"
 val slf4jVersion = "1.7.25"
 //Java library versions
 val googleClientApiVersion = "1.22.0"
-val postgresDriverVersion = "42.0.0"
-//val coreNlpVersion = "3.7.0"
+val postgresDriverVersion = "42.1.4"
 
 //Akka
 libraryDependencies ++= Seq(
@@ -30,17 +30,10 @@ libraryDependencies ++= Seq(
 libraryDependencies += "com.google.api-client" % "google-api-client" % googleClientApiVersion
 //Sessions
 libraryDependencies ++= Seq(
-  "com.softwaremill.akka-http-session" %% "core" % "0.4.0",
-  "com.softwaremill.akka-http-session" %% "jwt"  % "0.4.0"
+  "com.softwaremill.akka-http-session" %% "core" % "0.5.1",
+  "com.softwaremill.akka-http-session" %% "jwt"  % "0.5.1"
 )
-//NLP dependencies
-libraryDependencies ++= Seq(
-  //"edu.stanford.nlp" % "stanford-corenlp" % coreNlpVersion,
-  //"edu.stanford.nlp" % "stanford-corenlp" % coreNlpVersion  classifier "models-english" //,
-  //"com.google.protobuf" % "protobuf-java" % protoBufVers,
-  //("org.languagetool" % "language-en" % languageToolVers)
-  //  .exclude("commons-logging", "commons-logging")
-)
+
 //Slick
 libraryDependencies ++= Seq(
   "com.typesafe.slick" %% "slick" % slickVersion,
@@ -52,17 +45,22 @@ libraryDependencies ++= Seq(
 //General
 libraryDependencies ++= Seq(
   "io.nlytx" %% "commons" % "0.1.1",
-//  "au.edu.utscic" %% "cic-tap-nlp" % "0.1",
-//  "au.edu.utscic" %% "cic-tap-aws" % "0.1",
 //  "com.typesafe" % "config" % "1.3.1",
     "org.json4s" %% "json4s-jackson" % json4sVersion,
-    "de.heikoseeberger" %% "akka-http-json4s" % "1.11.0",
+    "de.heikoseeberger" %% "akka-http-json4s" % "1.17.0",
 //  "org.scalactic" %% "scalactic" % "3.0.0",
-  "org.scalatest" %% "scalatest" % "3.0.0" % "test",
+  "org.scalatest" %% "scalatest" % "3.0.3" % "test",
   "org.slf4j" % "jcl-over-slf4j" % slf4jVersion,
-  "ch.qos.logback" % "logback-classic" % "1.1.7"
+  "ch.qos.logback" % "logback-classic" % "1.2.3"
 )
 
 scalacOptions in (Compile, doc) ++= Seq("-doc-root-content", baseDirectory.value+"/src/main/scala/root-doc.md")
 
 resolvers += Resolver.bintrayRepo("nlytx", "nlytx_commons")
+
+//Generate build info file
+//lazy val root = (project in file(".")).
+enablePlugins(BuildInfoPlugin)
+  buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion)
+  buildInfoPackage := "org.goingok"
+  buildInfoOptions += BuildInfoOption.BuildTime
