@@ -1,10 +1,12 @@
 name := "goingok-server"
-version := "1.0.1"
+version := "1.0.2"
 scalaVersion := "2.12.3"
 organization := "org.goingok"
 
 //Enable this only for local builds - disabled for Travis
-//enablePlugins(JavaAppPackaging)
+enablePlugins(JavaAppPackaging)
+//enablePlugins(DockerPlugin)
+dockerExposedPorts := Seq(8080)
 
 //Scala library versions
 val akkaVersion = "2.5.3"
@@ -27,7 +29,10 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-slf4j" % akkaVersion
 )
 //Google dependencies
-libraryDependencies += "com.google.api-client" % "google-api-client" % googleClientApiVersion
+libraryDependencies ++= Seq(
+  "com.google.api-client" % "google-api-client" % googleClientApiVersion exclude("org.apache.httpcomponents","httpclient"),
+  "org.apache.httpcomponents" % "httpclient" % "4.5.3" //To patch older version in google client
+)
 //Sessions
 libraryDependencies ++= Seq(
   "com.softwaremill.akka-http-session" %% "core" % "0.5.1",
@@ -39,8 +44,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.slick" %% "slick" % slickVersion,
   "com.typesafe.slick" %% "slick-hikaricp" % slickVersion,
   "org.postgresql" % "postgresql" % postgresDriverVersion,
-  "com.github.tminglei" %% "slick-pg" % slickpgVersion,
-  "com.github.tminglei" %% "slick-pg_json4s" % slickpgVersion
+  "com.github.tminglei" %% "slick-pg" % slickpgVersion exclude("org.postgresql","postgresql"), //provided by postgresql
+  "com.github.tminglei" %% "slick-pg_json4s" % slickpgVersion exclude("org.json4s","json4s-ast_2.12") //provided by json4s
 )
 //General
 libraryDependencies ++= Seq(
@@ -59,8 +64,9 @@ scalacOptions in (Compile, doc) ++= Seq("-doc-root-content", baseDirectory.value
 resolvers += Resolver.bintrayRepo("nlytx", "nlytx_commons")
 
 //Generate build info file
-//lazy val root = (project in file(".")).
+//Disable for travis CI
 enablePlugins(BuildInfoPlugin)
   buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion)
   buildInfoPackage := "org.goingok"
   buildInfoOptions += BuildInfoOption.BuildTime
+
