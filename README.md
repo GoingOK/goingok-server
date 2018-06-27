@@ -1,3 +1,5 @@
+## THIS PROJECT IS NO LONGER ACTIVE - See [goingok](https://github.com/GoingOK/goingok) for the current full-stack version.
+
 [![Build Status](https://travis-ci.org/GoingOK/goingok-server.svg?branch=master)](https://travis-ci.org/GoingOK/goingok-server) 
 [![https://img.shields.io/badge/license-Apache%202.0-blue.svg](https://img.shields.io/badge/license-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 <!-- [ ![bintray](https://api.bintray.com/packages/nlytx/nlytx_commons/nlytx_commons/images/download.svg?version=0.1.1) ](https://bintray.com/nlytx/nlytx_commons/nlytx_commons/0.1.1/link) -->
