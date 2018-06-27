@@ -113,7 +113,7 @@ trait GoingOkAPI extends GenericApi {
 
   }
 
-  lazy val serverInfo = ServerInfo(BuildInfo.name,BuildInfo.version,BuildInfo.builtAtString)
+  lazy val serverInfo = ServerInfo(BuildInfotest.name,BuildInfotest.version,BuildInfotest.builtAtString)
 
   override val adminRoutes = pathPrefix("admin") {
     path("version") {
